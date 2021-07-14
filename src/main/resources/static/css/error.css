@@ -1,0 +1,17 @@
+body {
+    	height: 100vh;
+    	width: 100%;
+    	background:url('img/plane.jpg');
+    	background-position: top;
+    	background-size:cover;
+    	/*background-attachment: fixed;*/
+    	background-repeat: no-repeat;
+}
+.page-wrap {
+        min-height: 100vh;
+}
+
+.white-div {
+        background:url('img/overlay.png');
+        padding: 50px;
+}
