@@ -4,7 +4,6 @@ body {
     	background:url('img/plane.jpg');
     	background-position: top;
     	background-size:cover;
-    	/*background-attachment: fixed;*/
     	background-repeat: no-repeat;
 }
 .page-wrap {
