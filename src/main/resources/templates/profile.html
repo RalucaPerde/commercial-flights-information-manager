@@ -6,22 +6,22 @@
     <meta charset="utf-8">
     <meta name="viewreport" content="width=device-width, initial-scale=1.0">
     <title>
-        Zooom Zooooooooooom
+        Profile
     </title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}" href="css/home.css"/>
     <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}" href="css/home.css"/>
 </head>
 <body>
 <div class="container-fluid banner">
     <div class="row">
         <div class="col-md-12">
             <nav class="navbar navbar-md">
-                <div class="navbar-brand">AIR FLIGHTS</div>
+                <div class="navbar-brand">Welcome to your profile</div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
+                        <a class="nav-link" th:href="@{http://localhost:8080}">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">AIRPORTS</a>
@@ -34,8 +34,8 @@
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item">
                         <a class="nav-link" th:href="@{http://localhost:8080/profile}"
-                        sec:authentication="name">
-                            </a>
+                           sec:authentication="name">
+                        </a>
                     </li>
                     <li sec:authorize="isAnonymous()" class="nav-item">
                         <a class="nav-link" th:href="@{http://localhost:8080/login}">Login</a>
@@ -47,11 +47,12 @@
             </nav>
         </div>
         <div class="col-md-8 offset-md-2 info">
-            <h1 class="text-center">ZOOOOM FLIGHTS</h1>
-            <p class="text-center">
-                ANYWHERE WITH TRUST
-            </p>
-            <a th:href="@{http://localhost:8080/login}" class="btn btn-info text-center">GET STARTED</a>
+            <h1>User profile</h1>
+            <div>
+                <p th:text="${user.email}"></p>
+                <p th:text="${user.firstName}"></p>
+                <p th:text="${user.lastName}"></p>
+            </div>
         </div>
     </div>
 </div>

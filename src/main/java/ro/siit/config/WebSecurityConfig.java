@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +15,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import ro.siit.service.UserDetailsServiceImpl;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -25,17 +29,32 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private DataSource dataSource;
+
+    @Override
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsServiceImpl();
+    }
 
     @Bean
     PasswordEncoder retrievePasswordEncoder() {
         return new BCryptPasswordEncoder(11);
     }
 
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setPasswordEncoder(retrievePasswordEncoder());
+        return authProvider;
+    }
+
     @Override
     public void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/home", "/index").permitAll()
+                .antMatchers("/", "/home", "/index", "/register", "/register-success", "/process-register")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -45,7 +64,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .permitAll()
+                .and()
+                .rememberMe();
     }
 
     @Override
@@ -56,15 +77,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/vendor/**", "/fonts/**");
     }
 
-    @Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-        return authenticationManager();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(retrievePasswordEncoder());
+    @Override
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
     }
 }
-
 

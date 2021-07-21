@@ -1,11 +1,9 @@
 package ro.siit.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(
@@ -25,7 +23,7 @@ public class User {
     @Column
     private String email;
 
-    @Column
+    @Column(length = 64)
     private String password;
 
     @Column(name = "first_name")
