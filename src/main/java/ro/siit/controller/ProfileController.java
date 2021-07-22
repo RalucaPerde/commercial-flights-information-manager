@@ -17,7 +17,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public String getProfile(final Model model, final Principal principal) {
         final String email = principal.getName();
-        userService.addModelAttribute(email,model);
+        userService.addModelAttribute(email, model);
         return "profile";
     }
 }
