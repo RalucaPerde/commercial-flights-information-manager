@@ -21,7 +21,7 @@
                 <div class="navbar-brand">Welcome to your profile</div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{http://localhost:8080}">HOME</a>
+                        <a class="nav-link" th:href="@{/home}">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">AIRPORTS</a>
@@ -33,15 +33,15 @@
                         <a class="nav-link" href="#">FLIGHTS</a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item">
-                        <a class="nav-link" th:href="@{http://localhost:8080/profile}"
+                        <a class="nav-link" th:href="@{/profile}"
                            sec:authentication="name">
                         </a>
                     </li>
                     <li sec:authorize="isAnonymous()" class="nav-item">
-                        <a class="nav-link" th:href="@{http://localhost:8080/login}">Login</a>
+                        <a class="nav-link" th:href="@{/login}">Login</a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item">
-                        <a class="nav-link" th:href="@{http://localhost:8080/logout}">Logout</a>
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -49,9 +49,12 @@
         <div class="col-md-8 offset-md-2 info">
             <h1>User profile</h1>
             <div>
-                <p th:text="${user.email}"></p>
-                <p th:text="${user.firstName}"></p>
-                <p th:text="${user.lastName}"></p>
+                <p>Email:
+                    <span class="text-light" th:text="${user.email}"></span></p>
+                <p>First name:
+                    <span class="text-light" th:text="${user.firstName}"></span></p>
+                <p>Last name:
+                    <span class="text-light" th:text="${user.lastName}"></span></p>
             </div>
         </div>
     </div>

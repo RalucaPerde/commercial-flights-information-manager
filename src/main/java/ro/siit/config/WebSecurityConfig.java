@@ -29,13 +29,8 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private DataSource dataSource;
+    private UserDetailsService userDetailsService;
 
-    @Override
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImpl();
-    }
 
     @Bean
     PasswordEncoder retrievePasswordEncoder() {
@@ -77,9 +72,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/vendor/**", "/fonts/**");
     }
 
-    @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+    @Autowired()
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(retrievePasswordEncoder());
     }
 }
 

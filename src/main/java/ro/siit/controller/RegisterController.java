@@ -25,9 +25,6 @@ public class RegisterController {
 
     @PostMapping("/process-register")
     public String processRegistration(@Valid final UserDto userDto) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(userDto.getPassword());
-        userDto.setPassword(encodedPassword);
         userService.saveUser(userDto);
         return "register-success";
     }

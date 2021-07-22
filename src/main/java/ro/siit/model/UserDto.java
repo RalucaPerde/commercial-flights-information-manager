@@ -17,20 +17,16 @@ import javax.validation.constraints.NotNull;
 public class UserDto {
 
     @NotBlank
-    @NotNull
     @Email
     private String email;
 
     @NotBlank
-    @NotNull
     private String firstName;
 
     @NotBlank
-    @NotNull
     private String lastName;
 
     @NotBlank
-    @NotNull
     private String password;
 
     private UserRole userRole;

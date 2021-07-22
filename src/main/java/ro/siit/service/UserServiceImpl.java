@@ -1,7 +1,9 @@
 package ro.siit.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import ro.siit.domain.User;
 import ro.siit.domain.UserRole;
 import ro.siit.model.UserDto;
@@ -21,7 +23,9 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userDto.getEmail());
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
-        user.setPassword(userDto.getPassword());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(userDto.getPassword());
+        user.setPassword(encodedPassword);
         user.setRole(UserRole.USER);
         final User savedUser = userRepository.save(user);
         return (savedUser.getId() != null);
@@ -32,6 +36,12 @@ public class UserServiceImpl implements UserService {
     public Optional<UserDto> findByEmail(final String email) {
         return userRepository.findByEmail(email)
                 .map(user -> new UserDto(user.getEmail(), user.getFirstName(), user.getLastName()));
+    }
+
+    @Override
+    public void addModelAttribute( final String email, final Model model) {
+        findByEmail(email).ifPresentOrElse(userDto -> model.addAttribute("user", userDto),
+                () -> model.addAttribute("user", new UserDto("N/A", "N/A", "N/A")));
     }
 }
 
