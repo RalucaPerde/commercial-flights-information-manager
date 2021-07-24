@@ -10,7 +10,9 @@
     <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css"  th:href="@{css/home.css}" href="css/home.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}" href="css/home.css"/>
+    <link rel="stylesheet" th:href="@{css/footer.css}" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
 <div class="container-fluid banner">
@@ -43,5 +45,8 @@
         </div>
     </div>
 </div>
+<footer th:replace="footer :: footer-info">
+</footer>
 </body>
 </html>
+
