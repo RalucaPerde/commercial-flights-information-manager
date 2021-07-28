@@ -7,17 +7,16 @@
     <title>
         Zooom Zooooooooooom
     </title>
-    <link rel="stylesheet" type="text/css"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css"  th:href="@{css/home.css}" href="css/home.css"/>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <link th:replace="common :: raleway-font-link"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}" href="css/home.css"/>
 </head>
 <body>
-<div  class="container-fluid banner">
+
+<div class="container-fluid banner">
     <div class="row">
         <div class="col-md-12">
-            <nav th:replace="header :: header-info">
-            </nav>
+            <nav th:replace="header :: header-info"></nav>
         </div>
         <div class="col-md-8 offset-md-2 info">
             <h1 class="text-center">ZOOOOM FLIGHTS</h1>
