@@ -24,14 +24,14 @@ public class FlightController {
     private AirlineService airlineService;
 
     @GetMapping("/flights")
-    private String showFlightsPage(final Model model, final AirportDto airportDto) {
+    public String showFlightsPage(final Model model, final AirportDto airportDto) {
         model.addAttribute("airports", airportService.findAllAirports());
         model.addAttribute("flightDto", new FlightDto());
         return "flights";
     }
 
     @PostMapping("/show-flights")
-    private String showFlightsResult(final Model model, final FlightDto flightDto) {
+    public String showFlightsResult(final Model model, final FlightDto flightDto) {
         model.addAttribute("flights", flightService.findAllActualFlights());
         model.addAttribute("airports", airportService.findAllAirports());
         model.addAttribute("airlines", airlineService.findAllAirlines());
