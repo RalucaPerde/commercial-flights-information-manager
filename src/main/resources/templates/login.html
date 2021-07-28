@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link th:replace="common :: boostrap-styles-link">
     <link rel="stylesheet" type="text/css" th:href="@{css/login.css}" href="login/home.css"/>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script th:replace="common :: bootstrap-js"></script>
 </head>
 <body>
 <div id="login">
     <div th:if="${param.logout}" class="row justify-content-center align-items-center form-group">
-
         <h3 class="text-center text-white pt-5 text-info">You have been successfully logged out.</h3>
     </div>
     <div class="container">

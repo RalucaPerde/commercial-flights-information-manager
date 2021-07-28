@@ -8,11 +8,10 @@
     <title>
         Airports
     </title>
-    <link rel="stylesheet" type="text/css"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <link th:replace="common :: raleway-font-link" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/home.css}"
-          href="http://localhost:8080/commercial-flights-information-manager/templates/home.css"/>
+          href="css/home.css"/>
 </head>
 <body>
 <div class="container-fluid banner">
