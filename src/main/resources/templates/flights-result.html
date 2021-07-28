@@ -95,7 +95,7 @@
                             th:if="${airport.id} == ${flight.departureAirportId}"
                             th:text="${airport.airportName}"></td>
                         <td th:each="airport : ${airports}"
-                            th:if="${airport.id} == ${flightDto.airportId}"
+                            th:if="${airport.id} == ${flight.arrivalAirportId}"
                             th:text="${airport.airportName}"></td>
                         <td th:each="airline : ${airlines}"
                             th:if="${airline.id} == ${flight.airlineId}"

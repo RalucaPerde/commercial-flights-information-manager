@@ -42,7 +42,7 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<FlightDto> findAllActualFlights() {
         return flightRepository.findAll().stream()
-                .filter(flight -> (flight.getDeparture().isAfter(LocalDate.now())))
+                .filter(flight -> (flight.getDeparture().equals(LocalDate.now()) || flight.getArrival().equals(LocalDate.now())))
                 .map(flight -> new FlightDto(flight.getFlightNo(), flight.getDeparture(), flight.getArrival(),
                         flight.getDepartureAirport().getId(), flight.getArrivalAirport().getId(),
                         flight.getAirline().getId()))
