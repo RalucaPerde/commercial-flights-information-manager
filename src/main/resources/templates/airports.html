@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewreport" content="width=device-width, initial-scale=1.0">
     <title>
-        Zooom Zooooooooooom
+        Airports
     </title>
     <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}" href="css/home.css"/>
-
+    <link rel="stylesheet" type="text/css" th:href="@{css/flight.css}" href="css/flight.css"/>
 </head>
 <body>
 <div class="container-fluid banner">
@@ -35,13 +35,23 @@
                 </ul>
             </nav>
         </div>
-        <div class="col-md-8 offset-md-2 info">
-            <h1 class="text-center">ZOOOOM FLIGHTS</h1>
-            <p class="text-center">
-                ANYWHERE WITH TRUST
-            </p>
-            <a href="#" class="btn btn-info text-center">GET STARTED</a>
-        </div>
+    </div>
+    <div class="col-md-8 offset-md-2 info">
+        <h1 class="text-center">Airports</h1>
+        <p class="text-center">
+            Please choose the airport from down below:
+        </p>
+        <form method="get" th:object="${airportDto}">
+            <label for="airports" class="sr-only">Airport</label>
+            <input th:field="*{airportName}" type="text" class="form-control" id="airports" placeholder="Airport"
+                   list="suggestions">
+            <datalist id="suggestions">
+                <option th:each="airport : ${airports}"
+                        th:text="${airport.airportName}"></option>
+            </datalist>
+            <br>
+            <button class="btn btn-info text-center">Profile</button>
+        </form>
     </div>
 </div>
 </body>

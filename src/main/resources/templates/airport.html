@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewreport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Profile
+    </title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/flight.css}" href="css/flight.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-md">
+                <div class="navbar-brand">Airport profile</div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/home}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/airports}">AIRPORTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">AIRLINES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FLIGHTS</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" th:href="@{/profile}"
+                           sec:authentication="name">
+                        </a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-8 offset-md-2 info border border-light rounded">
+            <br>
+            <div class="container">
+                <div class="justify-content-md-center">
+                    <p>Airport name:
+                        <span class="text-light" th:text="${airportDto.airportName}"></span></p>
+                    <br>
+                    <p>City:
+                        <span class="text-light" th:text="${airportDto.city}"></span></p>
+                    <br>
+                    <p>Country:
+                        <span class="text-light" th:text="${airportDto.country}"></span></p>
+                    <br>
+                    <p>IATA:
+                        <span class="text-light" th:text="${airportDto.iata}"></span></p>
+                    <br>
+                    <p>ICAO:
+                        <span class="text-light" th:text="${airportDto.icao}"></span></p>
+                    <br>
+                    <p>Latitude:
+                        <span class="text-light" th:text="${airportDto.latitude}"></span></p>
+                    <br>
+                    <p>Longitude:
+                        <span class="text-light" th:text="${airportDto.longitude}"></span></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <a th:href="@{/flights}" class="btn btn-info text-center">Find flights</a>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+</body>
+</html>
+
