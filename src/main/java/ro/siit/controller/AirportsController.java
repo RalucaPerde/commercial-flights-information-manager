@@ -16,8 +16,6 @@ public class AirportsController {
     @Autowired
     private AirportService airportService;
 
-    @Autowired
-    private FlightService flightService;
 
     @GetMapping("/airports")
     public String showAirportProfile(@RequestParam(value = "airportName", required = false) final String airportName,
@@ -31,16 +29,6 @@ public class AirportsController {
                             "N/A", "N/A", "N/A", "N/A", "N/A")));
             return "airport";
         }
-    }
-
-    @GetMapping("/airport/{airportName}")
-    public String showProfile(@PathVariable("airportName") final String airportName,
-                              final Model model, final AirportDto airDto) {
-
-        airportService.findByAirportName(airportName).ifPresentOrElse(airportDto -> model.addAttribute("airportDto", airportDto),
-                () -> model.addAttribute("airportDto", new AirportDto("N/A", "N/A",
-                        "N/A", "N/A", "N/A", "N/A", "N/A")));
-        return "airport";
     }
 }
 
