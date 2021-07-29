@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ro.siit.domain.UserRole;
+import ro.siit.validation.UniqueEmail;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -17,6 +18,7 @@ public class UserDto {
 
     @NotBlank
     @Email
+    @UniqueEmail
     private String email;
 
     @NotBlank
