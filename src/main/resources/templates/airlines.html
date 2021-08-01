@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewreport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Airports
+    </title>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <link th:replace="common :: raleway-font-link"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/flight.css}" href="http://localhost:8080/css/flight.css"/>
+</head>
+<body>
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-12">
+            <nav th:replace="header :: header-info"></nav>
+        </div>
+    </div>
+    <div class="col-md-8 offset-md-2 info">
+        <h1 class="text-center">Airlines</h1>
+        <p class="text-center">
+            Please choose the airline from down below:
+        </p>
+        <form method="get" th:object="${airlineDto}">
+            <label for="airlines" class="sr-only">Airline</label>
+            <select th:field="*{id}" type="text" class="form-control" id="airlines"
+                    placeholder="Airlines">
+                <option th:each="airline : ${airlines}"
+                        th:text="${airline.airlineName}"
+                        th:value=${airline.id}></option>
+            </select>
+            <br>
+            <button class="btn btn-info text-center">Profile</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
