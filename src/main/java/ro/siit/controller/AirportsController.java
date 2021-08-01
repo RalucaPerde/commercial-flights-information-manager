@@ -24,9 +24,7 @@ public class AirportsController {
             model.addAttribute("airports", airportService.findAllAirports());
             return "airports";
         } else {
-            airportService.findByAirportName(airportName).ifPresentOrElse(airportDto -> model.addAttribute("airportDto", airportDto),
-                    () -> model.addAttribute("airportDto", new AirportDto("N/A", "N/A",
-                            "N/A", "N/A", "N/A", "N/A", "N/A")));
+            airportService.findByAirportName(airportName).ifPresent(airportDto -> model.addAttribute("airportDto", airportDto));
             return "airport";
         }
     }
