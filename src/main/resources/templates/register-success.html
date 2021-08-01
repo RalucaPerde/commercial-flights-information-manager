@@ -4,15 +4,15 @@
     <link th:replace="common :: boostrap-styles-link">
     <link rel="stylesheet" type="text/css" href="css/error.css"/>
     <script th:replace="common :: bootstrap-js"></script>
+    <title>Registration Succeeded</title>
 </head>
 <body>
 <div class="page-wrap d-flex flex-row align-items-center">
     <div class="container white-div">
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
-                <span class="display-1 d-block text-light">404</span>
-                <div class="mb-4 lead text-light">The page you are looking for was not found.</div>
-                <a th:href="@{http://localhost:8080/}" class="btn btn-info text-center">Back to Home</a>
+                <span class="display-1 d-block text-light">Register successfully!</span>
+                <a th:href="@{/home}" class="btn btn-info text-center">Back to Home</a>
             </div>
         </div>
     </div>
