@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Flight</title>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <script th:replace="common :: bootstrap-js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/css/register.css}"
+          href="http://localhost:8080/css/register.css"/>
+</head>
+<body>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <div class="container register-form">
+                <div class="form">
+                    <div class="note">
+                        <p>Edit Flight</p>
+                    </div>
+                    <div class="form-content">
+                        <form th:action="@{'/process-edit/' + ${id}}" method="post"
+                              th:object="${flightDto}" role="form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input th:field="*{flightNo}" required type="text" name="flight_number"
+                                               id="flight_number" class="form-control input-sm"
+                                               placeholder="Flight Number"
+                                               minlength="4">
+                                        <span th:if="${#fields.hasErrors('flightNo')}" th:errors="*{flightNo}"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="departure">Departure date:</label>
+                                        <input th:field="*{departure}" required type="datetime-local" name="departure"
+                                               id="departure"
+                                               class="form-control input-sm" placeholder="Departure">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="arrival">Arrival date:</label>
+                                        <input th:field="*{arrival}" required type="datetime-local" name="arrival"
+                                               id="arrival"
+                                               class="form-control input-sm" placeholder="Arrival">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select th:field="*{departureAirportId}" class="form-control"
+                                                id="departure-airports">
+                                            <option th:each="airport : ${airports}"
+                                                    th:text="${airport.airportName}"
+                                                    th:value=${airport.id}></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select th:field="*{arrivalAirportId}" class="form-control"
+                                                id="arrival-airports">
+                                            <option th:each="airport : ${airports}"
+                                                    th:text="${airport.airportName}"
+                                                    th:value=${airport.id}></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select th:field="*{airlineId}" class="form-control"
+                                                id="airline">
+                                            <option th:each="airline : ${airlines}"
+                                                    th:text="${airline.airlineName}"
+                                                    th:value=${airline.id}></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col text-center">
+                                    <input type="submit" value="Edit" class="btn btn-info btnSubmit">
+                                    <a th:href="@{/dashboard}" class="btn btn-info btnSubmit">Back to dashboard</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
