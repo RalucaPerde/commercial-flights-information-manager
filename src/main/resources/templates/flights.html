@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewreport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Airports
+    </title>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <link th:replace="common :: raleway-font-link" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/flight.css}"
+          href="http://localhost:8080/css/flight.css"/>
+</head>
+<body>
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-12">
+            <nav th:replace="header :: header-info"></nav>
+        </div>
+    </div>
+    <div class="col-md-8 offset-md-2 info">
+        <h1 class="text-center">See today flights</h1>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center">
+                        Choose your preferred airport from down below to see today flights:
+                    </p>
+                    <form method="post" th:action="@{/show-flights}" th:object="${flightDto}">
+                        <label for="airports" class="sr-only">Airport</label>
+                        <select th:field="*{airportId}" type="text" class="form-control" id="airports"
+                                placeholder="Airport">
+                            <option th:each="airport : ${airports}"
+                                    th:text="${airport.airportName}"
+                                    th:value=${airport.id}></option>
+                        </select>
+                        <br>
+                        <button class="btn btn-info text-center">Find flights</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <p class="text-center">
+                        Choose your preferred airline from down below to see today flights:
+                    </p>
+                    <form method="post" th:action="@{/show-flights-airlines}" th:object="${flightDto}">
+                        <label for="airlines" class="sr-only">Airline</label>
+                        <select th:field="*{airlineId}" type="text" class="form-control" id="airlines"
+                                placeholder="Airlines">
+                            <option th:each="airline : ${airlines}"
+                                    th:text="${airline.airlineName}"
+                                    th:value=${airline.id}></option>
+                        </select>
+                        <br>
+                        <button class="btn btn-info text-center">Find flights</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

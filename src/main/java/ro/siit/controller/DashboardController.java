@@ -31,7 +31,6 @@ public class DashboardController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RegisterController.class);
 
-
     @GetMapping("/dashboard")
     @RolesAllowed("ROLE_ADMIN")
     public String showDashboard(final Model model) {

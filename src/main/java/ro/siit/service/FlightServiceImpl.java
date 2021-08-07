@@ -77,7 +77,6 @@ public class FlightServiceImpl implements FlightService {
         return (savedFlight.getId() != null);
     }
 
-
     @Override
     public void updateFlight(final Long id, final FlightDto flightDto) {
         flightRepository.findById(id).ifPresent(flight -> {
