@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewreport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Flights
+    </title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/flight.css}" href="css/flight.css"/>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <link th:replace="common :: raleway-font-link"/>
+    <script th:replace="common :: jquery-js"></script>
+    <script th:replace="common :: ajax-js"></script>
+    <script th:replace="common :: bootstrap-js"></script>
+    <link th:replace="common :: jquery-style">
+    <script th:replace="common :: jquery-data-js"></script>
+</head>
+<body>
+<script>
+
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
+</script>
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-md">
+                <div class="navbar-brand">Airport profile</div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/home}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/airports}">AIRPORTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">AIRLINES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/flights}">FLIGHTS</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" th:href="@{/profile}"
+                           sec:authentication="name">
+                        </a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="container">
+            <div class="col-sm">
+                <table id="myTable" class="table table-fluid">
+                    <thead>
+                    <tr>
+                        <th>Flight number</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Departure airport</th>
+                        <th>Arrival airport</th>
+                        <th>Airline</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="flight : ${flights}"
+                        th:if="${flight.arrivalAirportId} == ${flightDto.airportId}
+                               or ${flight.departureAirportId} == ${flightDto.airportId}">
+                        <td th:text="${flight.flightNo}"></td>
+                        <td th:text="${flight.departure}"></td>
+                        <td th:text="${flight.arrival}"></td>
+                        <td th:each="airport : ${airports}"
+                            th:if="${airport.id} == ${flight.departureAirportId}"
+                            th:text="${airport.airportName}"></td>
+                        <td th:each="airport : ${airports}"
+                            th:if="${airport.id} == ${flight.arrivalAirportId}"
+                            th:text="${airport.airportName}"></td>
+                        <td th:each="airline : ${airlines}"
+                            th:if="${airline.id} == ${flight.airlineId}"
+                            th:text="${airline.airlineName}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+</body>
+</html>
+
