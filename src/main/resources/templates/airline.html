@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewreport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Profile
+    </title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/flight.css}" href="http://localhost:8080/css/flight.css"/>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <link th:replace="common :: raleway-font-link"/>
+</head>
+<body>
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-12">
+            <nav th:replace="header :: header-info"></nav>
+        </div>
+        <div class="col-md-8 offset-md-2 info border border-light rounded">
+            <br>
+            <div class="container">
+                <div class="justify-content-md-center">
+                    <p>Airline name:
+                        <span class="text-light" th:text="${airlineDto.airlineName}"></span></p>
+                    <br>
+                    <p>Country:
+                        <span class="text-light" th:text="${airlineDto.country}"></span></p>
+                    <br>
+                    <p>Iata:
+                        <span class="text-light"
+                              th:text="${airlineDto.iata != '' ? airlineDto.iata : 'Not specified'}"></span>
+                    </p>
+                    <br>
+                    <p>Icao:
+                        <span class="text-light"
+                              th:text="${airlineDto.icao != '' ? airlineDto.icao : 'Not specified'}"></span>
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <a th:href="@{/flights}" class="btn btn-info text-center">Find flights</a>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+</body>
+</html>
+

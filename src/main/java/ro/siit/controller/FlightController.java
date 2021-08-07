@@ -24,8 +24,9 @@ public class FlightController {
     private AirlineService airlineService;
 
     @GetMapping("/flights")
-    public String showFlightsPage(final Model model, final AirportDto airportDto) {
+    public String showFlightsPage(final Model model) {
         model.addAttribute("airports", airportService.findAllAirports());
+        model.addAttribute("airlines", airlineService.findAllAirlines());
         model.addAttribute("flightDto", new FlightDto());
         return "flights";
     }
@@ -36,6 +37,14 @@ public class FlightController {
         model.addAttribute("airports", airportService.findAllAirports());
         model.addAttribute("airlines", airlineService.findAllAirlines());
         return "flights-result";
+    }
+
+    @PostMapping("/show-flights-airlines")
+    public String showFlightsResultByAirline(final Model model, final FlightDto flightDto) {
+        model.addAttribute("flights", flightService.findAllActualFlights());
+        model.addAttribute("airports", airportService.findAllAirports());
+        model.addAttribute("airlines", airlineService.findAllAirlines());
+        return "flights-result-by-airline";
     }
 }
 
