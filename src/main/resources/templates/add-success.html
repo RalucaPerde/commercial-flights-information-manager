@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:replace="common :: boostrap-styles-link">
+    <link rel="stylesheet" type="text/css" href="css/error.css"/>
+    <script th:replace="common :: bootstrap-js"></script>
+    <title>Add Succeeded</title>
+</head>
+<body>
+<div class="page-wrap d-flex flex-row align-items-center">
+    <div class="container white-div">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <span class="display-1 d-block text-light">Added flight successfully!</span>
+                <a th:href="@{/dashboard}" class="btn btn-info text-center">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

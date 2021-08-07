@@ -7,7 +7,6 @@ import ro.siit.repository.AirlineRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class AirlineServiceImpl implements AirlineService {
@@ -20,7 +19,8 @@ public class AirlineServiceImpl implements AirlineService {
         return airlineRepository.findAll().stream()
                 .map(airline -> new AirlineDto(airline.getId(), airline.getAirlineName(), airline.getCountry(),
                         airline.getIata(), airline.getIcao()))
-                .collect(Collectors.toList());
+                .toList();
+
     }
 
     @Override

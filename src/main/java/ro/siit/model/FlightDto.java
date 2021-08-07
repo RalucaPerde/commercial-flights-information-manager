@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -19,11 +19,11 @@ public class FlightDto {
     @NotBlank
     private String flightNo;
 
-    @NotNull
-    private LocalDate departure;
+    @NotEmpty
+    private String departure;
 
-    @NotNull
-    private LocalDate arrival;
+    @NotEmpty
+    private String arrival;
 
     @NotNull
     private Long departureAirportId;
@@ -31,14 +31,12 @@ public class FlightDto {
     @NotNull
     private Long arrivalAirportId;
 
-    @NotNull
     private Long airportId;
 
     @NotNull
     private Long airlineId;
 
-    public FlightDto(final String flightNo, final LocalDate departure, final LocalDate arrival,
-                     final Long departureAirportId, final Long arrivalAirportId, final Long airlineId) {
+    public FlightDto(String flightNo, String departure, String arrival, Long departureAirportId, Long arrivalAirportId, Long airlineId) {
         this.flightNo = flightNo;
         this.departure = departure;
         this.arrival = arrival;

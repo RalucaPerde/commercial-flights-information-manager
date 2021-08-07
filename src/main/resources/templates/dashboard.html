@@ -25,7 +25,6 @@
     $(document).ready( function () {
     $('#myTable').DataTable();
 } );
-
 </script>
 <div class="container-fluid">
     <div class="row">
@@ -38,7 +37,7 @@
     </div>
 </div>
 <div class="d-flex justify-content-around">
-    <button type="button" class="btn btn-light">Add a new flight
+    <a th:href="@{/dashboard/add}" class="btn btn-light">Add a new flight
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
              class="bi bi-cloud-plus-fill" viewBox="0 0 16 16">
             <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0
@@ -46,7 +45,7 @@
                     9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0
                     1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
         </svg>
-    </button>
+    </a>
 </div>
 <div class="container">
     <div class="d-flex justify-content-around">

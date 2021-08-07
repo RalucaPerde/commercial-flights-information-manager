@@ -7,7 +7,6 @@ import ro.siit.repository.AirportRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class AirportServiceImpl implements AirportService {
@@ -27,7 +26,8 @@ public class AirportServiceImpl implements AirportService {
         return airportRepository.findAll().stream()
                 .map(airport -> new AirportDto(airport.getId(), airport.getAirportName(), airport.getCity(), airport.getCountry()
                         , airport.getIata(), airport.getIcao(), airport.getLatitude(), airport.getLongitude()))
-                .collect(Collectors.toList());
+                .toList();
+
     }
 
     @Override
