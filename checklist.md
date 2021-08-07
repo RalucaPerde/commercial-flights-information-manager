@@ -1,12 +1,12 @@
-- [ ] login
-- [ ] registration
-- [ ] header
-- [ ] footer
-- [ ] home page
-- [ ] search by airport
-- [ ] search by airline
-- [ ] dashboard
-    - [ ] add functionality
-    - [ ] edit functionality
-    - [ ] delete functionality
-- [ ] custom error pages
+- [V] login
+- [V] registration
+- [V] header
+- [V] footer
+- [V] home page
+- [V] search by airport
+- [V] search by airline
+- [V] dashboard
+    - [V] add functionality
+    - [V] edit functionality
+    - [V] delete functionality
+- [V] custom error pages
