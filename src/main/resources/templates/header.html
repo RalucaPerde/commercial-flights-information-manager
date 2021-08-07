@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <link th:replace="common :: raleway-font-link"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}" href="css/home.css"/>
+</head>
+<body>
+<nav th:fragment="header-info" class="navbar navbar-md">
+    <div class="navbar-brand">AIR FLIGHTS</div>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/home}">HOME</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/airports}">AIRPORTS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/airlines}">AIRLINES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/flights}">FLIGHTS</a>
+        </li>
+        <li sec:authorize="isAuthenticated()" class="nav-item">
+            <a class="nav-link" th:href="@{/profile}"
+               sec:authentication="name">
+            </a>
+        </li>
+        <li sec:authorize="isAnonymous()" class="nav-item">
+            <a class="nav-link" th:href="@{/login}">Login</a>
+        </li>
+        <li sec:authorize="isAuthenticated()" class="nav-item">
+            <a class="nav-link" th:href="@{/logout}">Logout</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>
+

@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
@@ -10,29 +11,13 @@
     <link th:replace="common :: boostrap-styles-link"/>
     <link th:replace="common :: raleway-font-link"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/home.css}" href="css/home.css"/>
-
 </head>
 <body>
+
 <div class="container-fluid banner">
     <div class="row">
         <div class="col-md-12">
-            <nav class="navbar navbar-md">
-                <div class="navbar-brand">AIR FLIGHTS</div>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">AIRPORTS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">AIRLINES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FLIGHTS</a>
-                    </li>
-                </ul>
-            </nav>
+            <nav th:replace="header :: header-info"></nav>
         </div>
         <div class="col-md-8 offset-md-2 info">
             <h1 class="text-center">ZOOOOM FLIGHTS</h1>
@@ -43,6 +28,8 @@
         </div>
     </div>
 </div>
+<footer th:replace="footer :: footer-info">
+</footer>
 </body>
 </html>
 

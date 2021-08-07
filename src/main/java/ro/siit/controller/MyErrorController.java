@@ -25,3 +25,4 @@ public class MyErrorController implements ErrorController {
         return "error";
     }
 }
+
