@@ -33,11 +33,11 @@ public class FlightDto {
     @NotNull
     private Long arrivalAirportId;
 
-
     private Long airportId;
 
     @NotNull
     private Long airlineId;
+
 
     public FlightDto(final String flightNo, final String departure, final String arrival, final Long departureAirportId,
                      final Long arrivalAirportId, final Long airlineId) {

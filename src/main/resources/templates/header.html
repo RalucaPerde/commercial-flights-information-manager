@@ -30,11 +30,14 @@
                sec:authentication="name">
             </a>
         </li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
+            <a class="nav-link" th:href="@{/dashboard}">DASHBOARD</a>
+        </li>
         <li sec:authorize="isAnonymous()" class="nav-item">
-            <a class="nav-link" th:href="@{/login}">Login</a>
+            <a class="nav-link" th:href="@{/login}">LOGIN</a>
         </li>
         <li sec:authorize="isAuthenticated()" class="nav-item">
-            <a class="nav-link" th:href="@{/logout}">Logout</a>
+            <a class="nav-link" th:href="@{/logout}">LOGOUT</a>
         </li>
     </ul>
 </nav>
