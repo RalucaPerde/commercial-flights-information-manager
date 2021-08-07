@@ -90,5 +90,12 @@ public class DashboardController {
             return "edit-success";
         }
     }
+
+    @GetMapping("dashboard/delete/{id}")
+    @RolesAllowed("ROLE_ADMIN")
+    public String showDeleteConfirmation(@PathVariable(name = "id") final Long id) {
+        flightService.deleteFlight(id);
+        return "delete-success";
+    }
 }
 

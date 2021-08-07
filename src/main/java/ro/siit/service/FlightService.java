@@ -16,5 +16,7 @@ public interface FlightService {
     boolean addFlight(FlightDto flightDto);
 
     void updateFlight(Long id, FlightDto flightDto);
+
+    boolean deleteFlight(Long id);
 }
 

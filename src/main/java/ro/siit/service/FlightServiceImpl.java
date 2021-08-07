@@ -94,5 +94,11 @@ public class FlightServiceImpl implements FlightService {
             flightRepository.save(flight);
         });
     }
+
+    @Override
+    public boolean deleteFlight(Long id) {
+        flightRepository.findById(id).ifPresent(flight -> flightRepository.delete(flight));
+        return flightRepository.findById(id).isEmpty();
+    }
 }
 
