@@ -16,34 +16,7 @@
 <div class="container-fluid banner">
     <div class="row">
         <div class="col-md-12">
-            <nav class="navbar navbar-md">
-                <div class="navbar-brand">Airport profile</div>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/home}">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/airports}">AIRPORTS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">AIRLINES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FLIGHTS</a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()" class="nav-item">
-                        <a class="nav-link" th:href="@{/profile}"
-                           sec:authentication="name">
-                        </a>
-                    </li>
-                    <li sec:authorize="isAnonymous()" class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()" class="nav-item">
-                        <a class="nav-link" th:href="@{/logout}">Logout</a>
-                    </li>
-                </ul>
-            </nav>
+            <nav th:replace="header :: header-info"></nav>
         </div>
         <div class="col-md-8 offset-md-2 info border border-light rounded">
             <br>

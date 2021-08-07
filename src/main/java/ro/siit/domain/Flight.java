@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "flights")
@@ -25,10 +26,10 @@ public class Flight {
     private String flightNo;
 
     @Column
-    private LocalDate departure;
+    private LocalDateTime departure;
 
     @Column
-    private LocalDate arrival;
+    private LocalDateTime arrival;
 
     @ManyToOne
     @JoinColumn(name = "airport_departure_id", referencedColumnName = "id")

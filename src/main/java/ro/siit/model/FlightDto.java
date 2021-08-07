@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class FlightDto {
 
-    @NotNull
     private Long id;
 
     @NotBlank
