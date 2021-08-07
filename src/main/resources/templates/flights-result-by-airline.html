@@ -16,6 +16,8 @@
     <script th:replace="common :: bootstrap-js"></script>
     <link th:replace="common :: jquery-style">
     <script th:replace="common :: jquery-data-js"></script>
+    <link rel="stylesheet" th:href="@{css/footer.css}" href="css/footer.css">
+    <link th:replace="common ::  ajax-style"/>
 </head>
 <body>
 <script>
@@ -73,6 +75,8 @@
 <br>
 <br>
 <br>
+<footer th:replace="footer :: footer-info">
+</footer>
 </body>
 </html>
 

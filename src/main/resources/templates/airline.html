@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/flight.css}" href="http://localhost:8080/css/flight.css"/>
     <link th:replace="common :: boostrap-styles-link"/>
     <link th:replace="common :: raleway-font-link"/>
+    <link rel="stylesheet" th:href="@{css/footer.css}" href="css/footer.css">
+    <link th:replace="common ::  ajax-style"/>
 </head>
 <body>
 <div class="container-fluid banner">
@@ -49,6 +51,8 @@
     <br>
     <br>
 </div>
+<footer th:replace="footer :: footer-info">
+</footer>
 </body>
 </html>
 
