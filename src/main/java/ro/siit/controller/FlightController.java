@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import ro.siit.model.AirportDto;
 import ro.siit.model.FlightDto;
 import ro.siit.service.AirlineService;
 import ro.siit.service.AirportService;

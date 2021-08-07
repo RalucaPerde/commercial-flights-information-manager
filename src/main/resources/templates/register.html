@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link th:replace="common :: boostrap-styles-link"/>
+    <script th:replace="common :: bootstrap-js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{css/register.css}" href="register/home.css"/>
+</head>
+<body>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <div class="container register-form">
+                <div class="form">
+                    <div class="note">
+                        <p>Register</p>
+                    </div>
+                    <div class="form-content">
+                        <form th:action="@{/process-register}" method="post" th:object="${userDto}" role="form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input th:field="*{firstName}" required type="text" name="first_name"
+                                               id="first_name" class="form-control input-sm" placeholder="First Name"
+                                               minlength="2">
+                                        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input th:field="*{lastName}" required type="text" name="last_name"
+                                               id="last_name"
+                                               class="form-control input-sm" placeholder="Last Name" minlength="2">
+                                        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input th:field="*{email}" required type="email" name="email" id="email"
+                                               class="form-control input-sm" placeholder="Email Address">
+                                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input th:field="*{password}" required type="password" name="password"
+                                               id="password" class="form-control input-sm" placeholder="Password"
+                                               minlength="8">
+                                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                                    </div>
+                                </div>
+                                <div class="col text-center">
+                                    <input type="submit" value="Register" class="btn btn-info btnSubmit">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
