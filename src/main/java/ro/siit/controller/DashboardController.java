@@ -16,6 +16,7 @@ import ro.siit.service.FlightService;
 import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
+
 @Controller
 public class DashboardController {
 
@@ -29,7 +30,6 @@ public class DashboardController {
     private AirlineService airlineService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RegisterController.class);
-
 
     @GetMapping("/dashboard")
     @RolesAllowed("ROLE_ADMIN")

@@ -31,7 +31,6 @@ public class FlightDto {
     @NotNull
     private Long arrivalAirportId;
 
-
     private Long airportId;
 
     @NotNull

@@ -20,6 +20,7 @@ public class AirlineServiceImpl implements AirlineService {
                 .map(airline -> new AirlineDto(airline.getId(), airline.getAirlineName(), airline.getCountry(),
                         airline.getIata(), airline.getIcao()))
                 .toList();
+
     }
 
     @Override

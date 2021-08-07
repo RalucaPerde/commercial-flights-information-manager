@@ -27,6 +27,7 @@ public class AirportServiceImpl implements AirportService {
                 .map(airport -> new AirportDto(airport.getId(), airport.getAirportName(), airport.getCity(), airport.getCountry()
                         , airport.getIata(), airport.getIcao(), airport.getLatitude(), airport.getLongitude()))
                 .toList();
+
     }
 
     @Override
