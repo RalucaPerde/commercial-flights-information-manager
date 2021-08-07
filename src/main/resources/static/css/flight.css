@@ -9,55 +9,42 @@ body{
 	color: #fff;
 }
 
-button{
-     color:#aaa;
-	 font-size: 1.2em;
-     margin-left:50%;
-     transform: translateX(-50%);
-     color: #fff;
-     background: #1eb3e9;
-     padding:10px 20px;
-     font-size: 2em;
-     font-weight: 600;
-}
-
-.banner{
-	height: 100vh;
-	width: 100%;
-}
-.banner .navbar{
+.navbar{
 	margin-top:4%;
 }
-.banner .navbar-brand{
+.navbar-brand{
 	color: #fff;
 	font-size:1.8em;
 	font-weight: 700;
 	margin-left: 10%;
 }
-.banner .nav{
+
+.nav{
 	margin-right:10%;
 }
-.banner .nav li a{
+.nav li a{
 	color:#aaa;
 	font-size: 1.2em;
 }
-.banner .info{
+.info{
 	margin-top:15%;
 	transform: translateY(-15%);
 }
-.banner .info h1{
+.info h1{
 	font-size: 2.5em;
 	font-weight: 700;
 	color: #fff;
 	letter-spacing: 2px;
 }
-.banner .info p{
+
+.info p{
 	font-size: 2em;
 	font-weight: 500;
 	color: #aaa;
 	letter-spacing: 2px;
 }
-.banner .info a{
+
+.info a{
 	margin-left:50%;
 	transform: translateX(-50%);
 	color: #fff;
@@ -66,7 +53,8 @@ button{
 	font-size: 2em;
 	font-weight: 600;
 }
-.banner .info button a:hover{
+  
+.info button a:hover{
 	background: #1ee9e9;
 }
 
@@ -77,4 +65,3 @@ button{
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
