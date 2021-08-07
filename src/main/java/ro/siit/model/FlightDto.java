@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class FlightDto {
 
+    @NotNull
+    private Long id;
 
     @NotBlank
     private String flightNo;
@@ -36,7 +38,20 @@ public class FlightDto {
     @NotNull
     private Long airlineId;
 
-    public FlightDto(String flightNo, String departure, String arrival, Long departureAirportId, Long arrivalAirportId, Long airlineId) {
+
+    public FlightDto(final String flightNo, final String departure, final String arrival, final Long departureAirportId,
+                     final Long arrivalAirportId, final Long airlineId) {
+        this.flightNo = flightNo;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.departureAirportId = departureAirportId;
+        this.arrivalAirportId = arrivalAirportId;
+        this.airlineId = airlineId;
+    }
+
+    public FlightDto(final Long id, final String flightNo, final String departure, final String arrival, final Long departureAirportId,
+                     final Long arrivalAirportId, final Long airlineId) {
+        this.id = id;
         this.flightNo = flightNo;
         this.departure = departure;
         this.arrival = arrival;

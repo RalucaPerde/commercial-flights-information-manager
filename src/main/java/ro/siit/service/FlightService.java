@@ -12,5 +12,9 @@ public interface FlightService {
     List<FlightDto> findAllFlights();
 
     List<FlightDto> findAllActualFlights();
+
+    boolean addFlight(FlightDto flightDto);
+
+    void updateFlight(Long id, FlightDto flightDto);
 }
 

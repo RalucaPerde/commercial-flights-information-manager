@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class FlightServiceImpl implements FlightService {
 
@@ -32,7 +31,7 @@ public class FlightServiceImpl implements FlightService {
     public Optional<FlightDto> findById(final Long id) {
 
         return flightRepository.findById(id)
-                .map(flight -> new FlightDto(flight.getFlightNo(), flight.getDeparture().toString(),
+                .map(flight -> new FlightDto(flight.getId(), flight.getFlightNo(), flight.getDeparture().toString(),
                         flight.getArrival().toString(),
                         flight.getDepartureAirport().getId(), flight.getArrivalAirport().getId(),
                         flight.getAirline().getId()));
@@ -42,7 +41,7 @@ public class FlightServiceImpl implements FlightService {
     public List<FlightDto> findAllFlights() {
 
         return flightRepository.findAll().stream()
-                .map(flight -> new FlightDto(flight.getFlightNo(), flight.getDeparture().toString(),
+                .map(flight -> new FlightDto(flight.getId(), flight.getFlightNo(), flight.getDeparture().toString(),
                         flight.getArrival().toString(),
                         flight.getDepartureAirport().getId(), flight.getArrivalAirport().getId(),
                         flight.getAirline().getId()))
@@ -63,7 +62,6 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public boolean addFlight(FlightDto flightDto) {
         final Flight flight = new Flight();
-
         flight.setFlightNo(flightDto.getFlightNo());
         flight.setDeparture(LocalDateTime.parse(flightDto.getDeparture()));
         flight.setArrival(LocalDateTime.parse(flightDto.getArrival()));
@@ -77,6 +75,24 @@ public class FlightServiceImpl implements FlightService {
                 () -> new Airline(-1L, "N/A", "N/A", "N/A", "N/A")));
         final Flight savedFlight = flightRepository.save(flight);
         return (savedFlight.getId() != null);
+    }
+
+    @Override
+    public void updateFlight(final Long id, final FlightDto flightDto) {
+        flightRepository.findById(id).ifPresent(flight -> {
+            flight.setFlightNo(flightDto.getFlightNo());
+            flight.setDeparture(LocalDateTime.parse(flightDto.getDeparture()));
+            flight.setArrival(LocalDateTime.parse(flightDto.getArrival()));
+            flight.setDepartureAirport(airportRepository.findById(flightDto.getDepartureAirportId()).orElseGet(
+                    () -> new Airport(-1L, "N/A", "N/A", "N/A", "N/A",
+                            "N/A", "N/A", "N/A")));
+            flight.setArrivalAirport(airportRepository.findById(flightDto.getArrivalAirportId()).orElseGet(
+                    () -> new Airport(-1L, "N/A", "N/A", "N/A", "N/A",
+                            "N/A", "N/A", "N/A")));
+            flight.setAirline(airlineRepository.findById(flightDto.getAirlineId()).orElseGet(
+                    () -> new Airline(-1L, "N/A", "N/A", "N/A", "N/A")));
+            flightRepository.save(flight);
+        });
     }
 }
 
