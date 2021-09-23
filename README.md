@@ -37,7 +37,6 @@ $ mvn spring-boot:run
 | Url                       | `jdbc:postgresql://localhost:5432/flights`|
 | Database names            | `flights`                                 |
 | Database hostname         | `localhost`                               |
-| Database username         | postgres                                  |
-| Database password         | .Raluca01                                 |
+
 
 
